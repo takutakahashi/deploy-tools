@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo docker run -it -v $PROJECT_ROOT/.direnv:/root/.config -v $PROJECT_ROOT/.direnv/kube:/root/.kube test $@

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec_cmd `basename $0` $@
