@@ -8,6 +8,4 @@ cat .deploy/.envrc >> .envrc
 cat .deploy/.gitignore >> .gitignore
 cat .deploy/.dockerignore >> .dockerignore
 echo "export APPLICATION=`basename $PWD`" >> .envrc
-mkdir -p bin
 mkdir -p .direnv
-ln -s $PWD/.deploy/bin/* $PWD/bin/
