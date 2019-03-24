@@ -4,6 +4,7 @@ test "$DOCKER" = "" \
   && export DOCKER='docker' || export DOCKER='sudo docker'
 $DOCKER rm $APPLICATION -f 1>/dev/null 2>/dev/null
 $DOCKER run --name $APPLICATION -it \
+  -v /var/run/docker.sock:/var/run/docker.sock \
   -v $PROJECT_ROOT/.direnv:/root/.config \
   -v $PROJECT_ROOT/.direnv/kube:/root/.kube \
   -v $PROJECT_ROOT/.direnv/helm:/root/.helm \
