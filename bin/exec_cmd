@@ -8,5 +8,6 @@ $DOCKER run --name $APPLICATION -it \
   -v $PROJECT_ROOT/.direnv:/root/.config \
   -v $PROJECT_ROOT/.direnv/kube:/root/.kube \
   -v $PROJECT_ROOT/.direnv/helm:/root/.helm \
+  -v $PROJECT_ROOT/.direnv/docker:/root/.docker \
   $IMAGE \
   $@
