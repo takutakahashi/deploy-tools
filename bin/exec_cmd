@@ -1,2 +1,11 @@
-#!/bin/bash
-sudo docker run -it -v $PROJECT_ROOT/.direnv:/root/.config -v $PROJECT_ROOT/.direnv/kube:/root/.kube test $@
+#!/bin/bash 
+DOCKER='sudo docker'
+$DOCKER rm $APPLICATION -f 1>/dev/null 2>/dev/null
+$DOCKER run --name $APPLICATION -it \
+  -v /var/log/containers:/var/log/containers \
+  -v $PROJECT_ROOT/.direnv:/root/.config \
+  -v $PROJECT_ROOT/.direnv/kube:/root/.kube \
+  -v $PROJECT_ROOT/.direnv/helm:/root/.helm \
+  -v $EXEC_CMD:/cmd \
+  $IMAGE \
+  $@
