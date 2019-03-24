@@ -1,5 +1,7 @@
-#!/bin/bash 
-DOCKER='sudo docker'
+#!/bin/bash
+test "$DOCKER" = "" \
+  && docker info 1>/dev/null 2>/dev/null \
+  && export DOCKER='docker' || export DOCKER='sudo docker'
 $DOCKER rm $APPLICATION -f 1>/dev/null 2>/dev/null
 $DOCKER run --name $APPLICATION -it \
   -v /var/log/containers:/var/log/containers \
