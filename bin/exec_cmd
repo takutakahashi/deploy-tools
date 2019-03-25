@@ -1,12 +1,10 @@
 #!/bin/bash
-export DOCKER='docker'
-$DOCKER rm $APPLICATION -f 1>/dev/null 2>/dev/null
-$DOCKER run --name $APPLICATION -it \
+docker ps |grep $APPLICATION || docker run --name $APPLICATION -it \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $PROJECT_ROOT/.direnv:/root/.config \
   -v $PROJECT_ROOT/.direnv/kube:/root/.kube \
   -v $PROJECT_ROOT/.direnv/helm:/root/.helm \
   -v $PROJECT_ROOT/.direnv/docker:/root/.docker \
   $ADDITIONAL_OPTS \
-  $IMAGE \
-  $@
+  $IMAGE
+docker exec -it $APPLICATION $@

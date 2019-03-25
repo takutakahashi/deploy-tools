@@ -22,3 +22,9 @@ RUN wget -O kp.zip https://github.com/c-bata/kube-prompt/releases/download/v1.0.
  && unzip kp.zip \
  && mv kube-prompt /usr/bin/ \
  && rm kp.zip
+
+# add files
+ADD start.sh /
+
+# start
+CMD ["/start.sh"]
