@@ -7,6 +7,7 @@ RUN wget -O key https://packages.cloud.google.com/apt/doc/apt-key.gpg && apt-key
 RUN apt update && apt -y install google-cloud-sdk kubectl docker.io
 
 # install stern
+
 RUN wget -O /usr/bin/stern https://github.com/wercker/stern/releases/download/1.10.0/stern_linux_amd64 \
  && chmod +x /usr/bin/stern
 
@@ -24,7 +25,6 @@ RUN wget -O kp.zip https://github.com/c-bata/kube-prompt/releases/download/v1.0.
 
 # add files
 ADD start.sh /
-ADD .bash_profile /root/
 
 # start
 CMD ["/start.sh"]
