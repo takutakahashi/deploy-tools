@@ -7,4 +7,4 @@ docker run --name $APPLICATION -itd \
   -v $PROJECT_ROOT/.direnv/docker:/root/.docker \
   $ADDITIONAL_OPTS \
   $IMAGE 1>/dev/null 2>/dev/null
-docker exec -it $APPLICATION $@
+docker exec $APPLICATION $@
