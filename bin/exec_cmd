@@ -9,4 +9,4 @@ docker run --name $APPLICATION -itd \
   -v $HOME/.vim:/root/.vim \
   $ADDITIONAL_OPTS \
   $IMAGE 1>/dev/null 2>/dev/null
-docker exec -it $APPLICATION $@
+docker exec $APPLICATION $@
