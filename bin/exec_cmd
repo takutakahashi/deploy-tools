@@ -1,5 +1,5 @@
-#!/bin/bash
-docker run --name $APPLICATION -itd \
+#!/bin/bash -e
+docker exec $EXEC_OPT $APPLICATION $@ || (docker run --name $APPLICATION -itd \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $PROJECT_ROOT/.direnv:/root/.config \
   -v $PROJECT_ROOT/.direnv/kube:/root/.kube \
@@ -7,6 +7,6 @@ docker run --name $APPLICATION -itd \
   -v $PROJECT_ROOT/.direnv/docker:/root/.docker \
   -v $HOME/.vimrc:/root/.vimrc \
   -v $HOME/.vim:/root/.vim \
+  -v $HOME/.zshrc:/root/.zshrc \
   $ADDITIONAL_OPTS \
-  $IMAGE 1>/dev/null 2>/dev/null
-docker exec $APPLICATION $@
+  $IMAGE 1>/dev/null 2>/dev/null; docker exec $EXEC_OPT $APPLICATION $@)
